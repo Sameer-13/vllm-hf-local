@@ -1,0 +1,6 @@
+vllm
+huggingface_hub[cli]
+openai
+pyyaml
+ipython>=8.20
+jedi>=0.19
