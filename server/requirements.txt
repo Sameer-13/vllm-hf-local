@@ -1,0 +1,4 @@
+# python=3.12
+vllm
+huggingface_hub[cli]
+pyyaml
