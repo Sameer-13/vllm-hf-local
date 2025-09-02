@@ -1,0 +1,13 @@
+server:
+  base_url: "http://127.0.0.1:8000/v1"   # REQUIRED
+  api_key: ""               # optional if your server has no --api-key
+  model: "meta-llama/Llama-3.2-1B-Instruct"  # optional; if missing, client picks the first from /v1/models
+
+prompt: |
+  You are given a customer review in Arabic.
+  Evaluate how satisfied the customer seems with the place, its condition, and its services.
+  Output a single integer score from 1 to 10, where:
+  1 = very unhappy and dissatisfied
+  10 = extremely happy and satisfied
+
+  ONLY output the integer, nothing else.
