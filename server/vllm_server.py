@@ -14,13 +14,7 @@ def main():
         "--host", args.host,
         "--port", str(args.port),
         "--dtype", "auto",
-        # baked-in safety for T4/Colab stacks:
-        "--enable-chunked-prefill=False",
-        "--max-model-len", "8192",
-        "--enforce-eager",
     ]
-    if args.api_key:
-        cmd += ["--api-key", args.api_key]
 
     # replace this process with vLLM so Ctrl+C etc. work naturally
     os.execvp(cmd[0], cmd)
