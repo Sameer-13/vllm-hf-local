@@ -4,7 +4,7 @@ import argparse, os
 def main():
     ap = argparse.ArgumentParser(description="Tiny vLLM server launcher")
     ap.add_argument("--model", default="meta-llama/Llama-3.2-1B-Instruct")
-    ap.add_argument("--host",  default="172.20.70.56")
+    ap.add_argument("--host",  default="0.0.0.0")
     ap.add_argument("--port",  type=int, default=8000)
     ap.add_argument("--api-key", default="")
     args = ap.parse_args()
