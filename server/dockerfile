@@ -39,14 +39,18 @@ ENV PATH="/opt/conda/bin:$PATH"
 RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
     conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
 
+
 # Create conda environment from environment.yml
 RUN conda env create -f environment.yml
 
-# better to ["bash", "-c", "conda run -n vllm-env python your_script.py"] and delete everything after this line
+# Initialize conda for bash so activation works in all shells
+RUN /opt/conda/bin/conda init bash
 
-# Activate the environment by default
-SHELL ["/bin/bash", "-c"] 
+# Set bash as the default shell for all subsequent RUN/CMD/ENTRYPOINT
+SHELL ["/bin/bash", "-c"]
+
+# Activate the environment by default in every shell
 RUN echo "conda activate vllm-env" >> ~/.bashrc
 
-# Set the default command
+# Set the default command to bash
 CMD ["bash"]
