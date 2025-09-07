@@ -9,19 +9,15 @@ def wait_server(base_url: str, api_key: str, timeout_s: int = 120) -> None:
     headers = {"Authorization": f"Bearer {api_key}"} if api_key else {}
     t0 = time.time()
     
-    # We only need to check the /v1/models endpoint.
     # If it responds, the server is ready for OpenAI-like calls.
     while time.time() - t0 < timeout_s:
         try:
-            # The only check we need is whether we can list the models.
             if httpx.get(f"{base_url}/models", headers=headers, timeout=3.0).status_code == 200:
                 print("✅ Server is ready.")
                 return
         except httpx.RequestError as e:
-            # This can happen if the server isn't up at all yet
             pass
         except Exception as e:
-            # Catch other potential exceptions during startup
             pass
         time.sleep(1)
         
