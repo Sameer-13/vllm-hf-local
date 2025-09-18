@@ -29,7 +29,7 @@ Learn how to deploy and interface with vLLM locally using Docker. This repositor
 
 2. **Inside the container, authenticate with HuggingFace:**
    ```bash
-   huggingface-cli login
+   hf auth login
    # Enter your HF token when prompted
    ```
 
